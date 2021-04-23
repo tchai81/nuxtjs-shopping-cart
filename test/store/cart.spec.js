@@ -1,8 +1,9 @@
+import jestConfig from '~/jest.config'
 import { mutations, getters, actions } from '~/store/cart'
 
 const { addItem, removeItem, increaseItemQty, updateItemQty } = mutations
 const { totalCount, totalPrice, totalPriceByItem } = getters
-// const { addOrIncreaseItemQty, addItem, removeItem, increaseItemQty, decreaseItemQty } = actions
+const { addOrIncreaseItemQty, updateItemQty: actionUpdateItemQty, removeItem: actionRemoveItem } = actions
 
 // describe('actions', () => {
 
@@ -82,4 +83,48 @@ describe('mutations', () => {
     expect(increasedProduct.qty).toBe(2)
   })
 
+})
+
+describe('actions', () => {
+  const state = {
+    state: {
+      items: [
+        { productId: 1, qty: 1, unitPrice: 1 },
+        { productId: 2, qty: 1, unitPrice: 1 },
+        { productId: 3, qty: 1, unitPrice: 1 },
+      ],
+    },
+    commit: jest.fn(),
+  }
+
+  it('add new item to cart', () => {
+    const product = { id: 4 }
+    addOrIncreaseItemQty(state, product)
+    expect(state.commit).toHaveBeenCalledWith('addItem', product)
+  })
+
+  it('add existing item to cart', () => {
+    const product = { id: 1 }
+    addOrIncreaseItemQty(state, product)
+    expect(state.commit).toHaveBeenCalledWith('increaseItemQty', product)
+  })
+
+  it('update existing item qty in cart', () => {
+    const productAndEvent = {
+      product: { id: 1 },
+      event: {
+        currentTarget: { value: 5 },
+      },
+    }
+    actionUpdateItemQty(state, productAndEvent)
+    expect(state.commit).toHaveBeenCalledWith('updateItemQty', {
+      product: productAndEvent.product,
+      newQty: +productAndEvent.event.currentTarget.value,
+    })
+  })
+
+  it('remove item from cart', () => {
+    actionRemoveItem(state, {})
+    expect(state.commit).toHaveBeenCalledWith('removeItem', {})
+  })
 })
