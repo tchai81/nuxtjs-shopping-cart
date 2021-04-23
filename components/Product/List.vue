@@ -29,7 +29,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters({
-      products: 'product/data',
+      products: 'product/items',
     }),
   },
   mounted() {

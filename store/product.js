@@ -2,13 +2,13 @@ import axios from 'axios'
 import transformer from '~/transformers/product'
 
 export const state = () => ({
-  data: [],
+  items: [],
   error: '',
 })
 
 export const mutations = {
-  setData(state, data) {
-    state.data = data
+  setItems(state, items) {
+    state.items = items
   },
   setError(state, error) {
     state.error = error
@@ -16,11 +16,11 @@ export const mutations = {
 }
 
 export const getters = {
-  data(state) {
-    return state.data
+  items(state) {
+    return state.items
   },
   get(state, productId) {
-    return state.data.find((item) => item.id === productId)
+    return state.items.find((item) => item.id === productId)
   },
 }
 
@@ -32,7 +32,7 @@ export const actions = {
       .then((response) => {
         const products = response?.data?.data || []
         if (products.length) {
-          commit('setData', transformer(products, rootState.country))
+          commit('setItems', transformer(products, rootState.country))
         } else {
           commit('setError', `Empty data set.`)
         }
