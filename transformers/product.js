@@ -2,7 +2,7 @@ import PricingFormatter from '~/mixins/pricingFormatter'
 
 const currencyExchangeRateByCountryCode = {
   ID: {
-    currency: 'RP',
+    currency: 'Rp',
     exchangeRate: 10942.93,
   },
 }

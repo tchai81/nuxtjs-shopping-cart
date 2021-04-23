@@ -5,12 +5,14 @@
     </div>
     <div class="d-flex flex-row pt-2">
       <div class="flex-fill justify-content-start text-left">
-        <strong>{{ product.name }}</strong
+        <strong class="text-uppercase">{{ product.name }}</strong
         ><br />{{ product.currency }}
         {{ product.price }}
       </div>
       <div class="flex-fill justify-content-end text-right">
-        <button @click="addToCart(product)">Add To Cart</button>
+        <button @click="addToCart(product)" class="text-uppercase">
+          Add To Cart
+        </button>
       </div>
     </div>
   </div>
@@ -35,10 +37,11 @@ export default Vue.extend({
 
 <style scoped lang="sass">
 .product-image
+  background: #fff
   border: 5px solid #c6c9cf
 button
   border: 0
   color: #fff
-  background-color: orange
+  background-color: #edae79
   font-size: 12px
 </style>

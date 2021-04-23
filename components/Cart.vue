@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h2 class="text-center pb-5">Shopping Cart - {{ totalCount }} items</h2>
+    <h5 class="text-center pt-3 pb-3">
+      <strong
+        ><span class="text-uppercase">Shopping Cart</span> -
+        {{ totalCount }} items</strong
+      >
+    </h5>
     <table class="table" v-if="items.length">
       <tr>
         <th></th>
@@ -11,7 +16,7 @@
         <th>Total</th>
       </tr>
       <tr v-for="item in items" :key="item.id">
-        <td class="align-middle">
+        <td class="align-middle text-center">
           <button @click="removeItem(item)">X</button>
         </td>
         <td class="align-middle">
@@ -35,7 +40,7 @@
       </tr>
       <tr v-if="items.length">
         <td colspan="5"></td>
-        <td colspan="5">{{ totalPrice }}</td>
+        <td>{{ totalPrice }}</td>
       </tr>
     </table>
   </div>
@@ -74,4 +79,10 @@ img
   width: 150px
   height: 150px
   border: 1px solid #ccc
+table > tr
+  font-weight: bold
+  border: 3px solid #D6D6D6
+input
+  width: 100px
+  text-align: center
 </style>

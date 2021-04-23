@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-5">
     <Product-List />
-    <hr />
+    <hr class="mt-5 mb-4" />
     <Cart />
   </div>
 </template>
@@ -18,3 +18,8 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped lang="sass">
+hr
+  border-width: 10px
+</style>
