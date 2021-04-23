@@ -1,7 +1,7 @@
 import { mutations, getters, actions } from '~/store/cart'
 
 const { addItem, removeItem, increaseItemQty, updateItemQty } = mutations
-const { totalCount, totalPrice } = getters
+const { totalCount, totalPrice, totalPriceByItem } = getters
 // const { addOrIncreaseItemQty, addItem, removeItem, increaseItemQty, decreaseItemQty } = actions
 
 // describe('actions', () => {
@@ -25,6 +25,11 @@ describe('getters', () => {
   it('get total price', () => {
     const result = totalPrice(state)
     expect(result).toBe(140)
+  })
+
+  it('get total price by item', () => {
+    const result = totalPriceByItem(state)({ productId: 3 })
+    expect(result).toBe(90)
   })
 })
 

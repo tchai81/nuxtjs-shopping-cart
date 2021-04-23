@@ -38,7 +38,12 @@ export const getters = {
     return PricingFormatter(state.items.reduce(
       (acc, currentItem) => acc + currentItem.qty * currentItem.unitPrice,
       0
-    ))
+    )
+    )
+  },
+  totalPriceByItem: (state) => (item) => {
+    const itemToCompute = state.items.find((stateItem) => stateItem.productId === item.productId)
+    return PricingFormatter(itemToCompute.qty * itemToCompute.unitPrice)
   },
 }
 
@@ -57,7 +62,7 @@ export const actions = {
     const { product, event } = productAndEvent
     state.commit('updateItemQty', {
       product,
-      newQty: event.currentTarget.value,
+      newQty: +event.currentTarget.value,
     })
   },
   removeItem(state, itemToRemoved) {

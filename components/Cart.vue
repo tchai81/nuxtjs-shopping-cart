@@ -36,7 +36,7 @@
             @change="onUpdateItemQty(item, $event)"
           />
         </td>
-        <td class="align-middle">{{ item.qty * item.unitPrice }}</td>
+        <td class="align-middle">{{ totalPriceByItem(item) }}</td>
       </tr>
       <tr v-if="items.length">
         <td colspan="5"></td>
@@ -57,6 +57,7 @@ export default Vue.extend({
       items: 'cart/items',
       totalCount: 'cart/totalCount',
       totalPrice: 'cart/totalPrice',
+      totalPriceByItem: 'cart/totalPriceByItem',
     }),
   },
   methods: {
