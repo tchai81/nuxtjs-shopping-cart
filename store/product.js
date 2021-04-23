@@ -25,21 +25,20 @@ export const getters = {
 }
 
 export const actions = {
-  fetch(state) {
+  fetch({ commit, rootState }) {
     const url = `http://s3.irvinsaltedegg.com.s3-ap-southeast-1.amazonaws.com/engineering-test/products.json`
-    const countryCode = `ID`
     axios
       .get(url)
       .then((response) => {
         const products = response?.data?.data || []
         if (products.length) {
-          state.commit('setData', transformer(products, countryCode))
+          commit('setData', transformer(products, rootState.country))
         } else {
-          state.commit('setError', `Empty data set.`)
+          commit('setError', `Empty data set.`)
         }
       })
       .catch(() => {
-        state.commit('setError', `Encounter error while fetching product data.`)
+        commit('setError', `Encounter error while fetching product data.`)
       })
   },
 }

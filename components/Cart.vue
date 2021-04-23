@@ -24,8 +24,7 @@
         </td>
         <td class="align-middle">{{ getProductById(item.productId).name }}</td>
         <td class="align-middle">
-          {{ getProductById(item.productId).currency
-          }}{{ getProductById(item.productId).price }}
+          {{ currency }} {{ getProductById(item.productId).price }}
         </td>
         <td class="align-middle">
           <input
@@ -36,11 +35,13 @@
             @change="onUpdateItemQty(item, $event)"
           />
         </td>
-        <td class="align-middle">{{ totalPriceByItem(item) }}</td>
+        <td class="align-middle">
+          {{ currency }} {{ totalPriceByItem(item) }}
+        </td>
       </tr>
       <tr v-if="items.length">
         <td colspan="5"></td>
-        <td>{{ totalPrice }}</td>
+        <td>{{ currency }} {{ totalPrice }}</td>
       </tr>
     </table>
   </div>
@@ -58,6 +59,7 @@ export default Vue.extend({
       totalCount: 'cart/totalCount',
       totalPrice: 'cart/totalPrice',
       totalPriceByItem: 'cart/totalPriceByItem',
+      currency: 'country/currency',
     }),
   },
   methods: {

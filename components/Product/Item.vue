@@ -6,7 +6,7 @@
     <div class="d-flex flex-row pt-2">
       <div class="flex-fill justify-content-start text-left">
         <strong class="text-uppercase">{{ product.name }}</strong
-        ><br />{{ product.currency }}
+        ><br />{{ currency }}
         {{ product.price }}
       </div>
       <div class="flex-fill justify-content-end text-right">
@@ -20,10 +20,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default Vue.extend({
   props: ['product'],
+  computed: {
+    ...mapGetters({
+      currency: 'country/currency',
+    }),
+  },
   methods: {
     ...mapActions({
       addOrIncreaseItemQty: 'cart/addOrIncreaseItemQty',
