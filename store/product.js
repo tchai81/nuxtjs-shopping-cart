@@ -3,6 +3,7 @@ import transformer from '~/transformers/product'
 
 export const state = () => ({
   items: [],
+  loaded: false,
   error: '',
 })
 
@@ -13,6 +14,10 @@ export const mutations = {
   setError(state, error) {
     state.error = error
   },
+  setLoaded(state, loaded) {
+    console.log('loaded')
+    state.loaded = loaded
+  },
 }
 
 export const getters = {
@@ -21,6 +26,9 @@ export const getters = {
   },
   get(state, productId) {
     return state.items.find((item) => item.id === productId)
+  },
+  isLoaded(state) {
+    return state.loaded
   },
 }
 
@@ -33,6 +41,7 @@ export const actions = {
         const products = response?.data?.data || []
         if (products.length) {
           commit('setItems', transformer(products, rootState.country))
+          commit('setLoaded', true)
         } else {
           commit('setError', `Empty data set.`)
         }

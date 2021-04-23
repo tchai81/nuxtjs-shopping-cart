@@ -54,7 +54,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default Vue.extend({
   computed: {
     ...mapGetters({
-      products: 'product/data',
+      products: 'product/items',
       items: 'cart/items',
       totalCount: 'cart/totalCount',
       totalPrice: 'cart/totalPrice',

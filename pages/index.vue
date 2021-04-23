@@ -1,8 +1,10 @@
 <template>
   <div class="container pt-5">
-    <Product-List />
-    <hr class="mt-5 mb-4" />
-    <Cart />
+    <div v-show="isLoaded">
+      <Product-List />
+      <hr class="mt-5 mb-4" />
+      <Cart />
+    </div>
   </div>
 </template>
 
@@ -10,11 +12,17 @@
 import Vue from 'vue'
 import ProductList from '~/components/Product/List'
 import Cart from '~/components/Cart'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   components: {
     ProductList,
     Cart,
+  },
+  computed: {
+    ...mapGetters({
+      isLoaded: 'product/isLoaded',
+    }),
   },
 })
 </script>
