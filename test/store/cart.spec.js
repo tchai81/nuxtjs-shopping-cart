@@ -24,12 +24,12 @@ describe('getters', () => {
 
   it('get total price', () => {
     const result = totalPrice(state)
-    expect(result).toBe(140)
+    expect(result).toBe('140.000')
   })
 
   it('get total price by item', () => {
     const result = totalPriceByItem(state)({ productId: 3 })
-    expect(result).toBe(90)
+    expect(result).toBe('90.000')
   })
 })
 

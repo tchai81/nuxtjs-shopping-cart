@@ -1,3 +1,3 @@
 export default (price) => {
-  return +price.toFixed(2)
+  return Number(price).toFixed(3)
 }
