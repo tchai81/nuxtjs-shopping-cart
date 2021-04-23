@@ -15,7 +15,6 @@ export const mutations = {
     state.error = error
   },
   setLoaded(state, loaded) {
-    console.log('loaded')
     state.loaded = loaded
   },
 }

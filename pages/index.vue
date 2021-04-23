@@ -10,9 +10,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import ProductList from '~/components/Product/List'
 import Cart from '~/components/Cart'
-import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   components: {
