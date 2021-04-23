@@ -1,4 +1,4 @@
-# irvins
+# Simple Shopping Cart demo with NuxtJs
 
 ## Build Setup
 
