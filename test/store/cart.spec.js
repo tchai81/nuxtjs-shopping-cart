@@ -1,6 +1,6 @@
 import { mutations, getters, actions } from '~/store/cart'
 
-const { addItem, removeItem, increaseItemQty, decreaseItemQty } = mutations
+const { addItem, removeItem, increaseItemQty, updateItemQty } = mutations
 const { totalCount, totalPrice } = getters
 // const { addOrIncreaseItemQty, addItem, removeItem, increaseItemQty, decreaseItemQty } = actions
 
@@ -56,8 +56,20 @@ describe('mutations', () => {
     expect(removedItem).toBe(undefined)
   })
 
+  it('update item quantity', () => {
+    const payload = {
+      product: {
+        productId: 2
+      },
+      newQty: 10
+    }
+    updateItemQty(state, payload)
+    const updatedCartItem = state.items.find((item) => item.productId === payload.product.productId)
+    expect(updatedCartItem.qty).toBe(10)
+  })
+
   it('increase item qty', () => {
-    const productToIncrease = { id: 2 }
+    const productToIncrease = { id: 3 }
     increaseItemQty(state, productToIncrease)
     const increasedProduct = state.items.find(
       (item) => item.productId === productToIncrease.id
@@ -65,16 +77,4 @@ describe('mutations', () => {
     expect(increasedProduct.qty).toBe(2)
   })
 
-  it('decrease item qty', () => {
-    const productToDecrease = { id: 2 }
-    decreaseItemQty(state, productToDecrease)
-    const increasedProduct = state.items.find(
-      (item) => item.productId === productToDecrease.id
-    )
-    expect(increasedProduct.qty).toBe(1)
-    decreaseItemQty(state, productToDecrease)
-    decreaseItemQty(state, productToDecrease)
-    decreaseItemQty(state, productToDecrease)
-    expect(increasedProduct.qty).toBe(0)
-  })
 })

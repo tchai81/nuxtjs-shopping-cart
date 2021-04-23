@@ -39,10 +39,7 @@ export const actions = {
         }
       })
       .catch(() => {
-        state.commit(
-          'SET_ERROR',
-          `Encounter error while fetching product data.`
-        )
+        state.commit('setError', `Encounter error while fetching product data.`)
       })
   },
 }

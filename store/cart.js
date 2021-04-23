@@ -17,17 +17,13 @@ export const mutations = {
     state.items = state.items.filter((item) => item.productId !== itemToRemoved.productId)
   },
 
-  increaseItemQty(state, product) {
-    state.items.find((item) => item.productId === product.id).qty++
+  updateItemQty(state, productAndNewQty) {
+    const { product, newQty } = productAndNewQty
+    state.items.find((item) => item.productId === product.productId).qty = newQty
   },
 
-  decreaseItemQty(state, product) {
-    const productToDecrease = state.items.find(
-      (item) => item.productId === product.id
-    )
-    if (productToDecrease.qty > 0) {
-      productToDecrease.qty--
-    }
+  increaseItemQty(state, product) {
+    state.items.find((item) => item.productId === product.id).qty++
   },
 }
 
@@ -56,6 +52,13 @@ export const actions = {
       return
     }
     state.commit('addItem', product)
+  },
+  updateItemQty(state, productAndEvent) {
+    const { product, event } = productAndEvent
+    state.commit('updateItemQty', {
+      product,
+      newQty: event.currentTarget.value,
+    })
   },
   removeItem(state, itemToRemoved) {
     state.commit('removeItem', itemToRemoved)
