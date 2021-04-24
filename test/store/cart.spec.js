@@ -5,10 +5,6 @@ const { addItem, removeItem, increaseItemQty, updateItemQty } = mutations
 const { totalCount, totalPrice, totalPriceByItem } = getters
 const { addOrIncreaseItemQty, updateItemQty: actionUpdateItemQty, removeItem: actionRemoveItem } = actions
 
-// describe('actions', () => {
-
-// })
-
 describe('getters', () => {
   const state = {
     items: [
