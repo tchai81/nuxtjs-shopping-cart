@@ -6,7 +6,7 @@
         {{ totalCount }} items</strong
       >
     </h5>
-    <table class="table" v-if="items.length">
+    <table v-if="items.length" class="table">
       <tr>
         <th></th>
         <th>Product</th>
