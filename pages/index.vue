@@ -11,14 +11,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-import ProductList from '~/components/Product/List'
-import Cart from '~/components/Cart'
 
 export default Vue.extend({
-  components: {
-    ProductList,
-    Cart,
-  },
   computed: {
     ...mapGetters({
       isLoaded: 'product/isLoaded',

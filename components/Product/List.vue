@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { mapActions, mapGetters } from 'vuex'
 import ProductItem from '~/components/Product/Item'
