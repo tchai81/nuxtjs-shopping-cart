@@ -1,7 +1,7 @@
 export const state = () => ({
-  countryCode: 'SG',
-  currency: 'SGD',
-  exchangeRate: 1,
+  countryCode: 'ID',
+  currency: 'Rp',
+  exchangeRate: 10934.72,
 })
 
 export const getters = {
